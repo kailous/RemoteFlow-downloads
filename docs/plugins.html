@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="搜索和下载 RemoteFlow 灵动岛插件，查看功能、版本和安装要求。">
+  <title>插件商店 · RemoteFlow</title>
+  <link rel="icon" href="assets/app-icon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="plugins.css?v=3">
+  <script src="release-downloads.js" defer></script>
+  <script src="plugins.js" defer></script>
+</head>
+<body class="store-page">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="nav store-nav">
+    <div class="nav-inner">
+      <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="26" height="26">RemoteFlow</a>
+      <nav aria-label="主导航">
+        <a href="index.html#keys">按键</a>
+        <a href="index.html#demo">动作编排</a>
+        <a href="index.html#island">灵动岛</a>
+        <a href="index.html#privacy">隐私</a>
+        <a href="index.html#faq">常见问题</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-store-link" href="plugins.html" aria-current="page">插件商店</a>
+        <a class="btn btn-small btn-primary" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-1.5.0-beta.1-macos-arm64.zip" data-release-artifact="app" aria-label="下载 RemoteFlow Mac 版">下载</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="store-main" id="main">
+    <div class="wrap">
+      <header class="store-heading">
+        <div>
+          <h1>插件商店</h1>
+          <p>适用于搭载 Apple 芯片且运行 macOS 14 或更高版本的 Mac。</p>
+        </div>
+        <search id="store-search-box" class="store-search" hidden>
+          <label class="store-sr-only" for="store-search">搜索插件</label>
+          <input type="search" id="store-search" placeholder="搜索插件" autocomplete="off" aria-controls="store-list">
+        </search>
+      </header>
+
+      <div class="store-catalog">
+        <aside class="store-sidebar" aria-label="商店导航">
+          <div class="store-filters" id="store-filters" role="group" aria-labelledby="store-categories" hidden>
+            <p id="store-categories">分类</p>
+            <button type="button" data-category="all" aria-pressed="true" aria-controls="store-list">全部插件</button>
+            <button type="button" data-category="music" aria-pressed="false" aria-controls="store-list">音乐</button>
+            <button type="button" data-category="system" aria-pressed="false" aria-controls="store-list">系统工具</button>
+          </div>
+          <a class="store-install-link" href="#install">安装指南 <span aria-hidden="true">↗</span></a>
+        </aside>
+
+        <section aria-labelledby="store-list-title">
+          <div class="store-list-heading">
+            <h2 id="store-list-title">全部插件</h2>
+            <p id="store-count" role="status" aria-atomic="true">2 个插件</p>
+          </div>
+
+          <ul class="store-list" id="store-list">
+            <li class="store-item" data-plugin-category="music" data-keywords="音乐播放 媒体 歌曲 切歌 上一首 下一首 暂停 专辑 封面 播放进度">
+              <img class="store-icon" src="assets/ui-music.webp" alt="" width="64" height="64">
+              <div class="store-item-info">
+                <h3>Apple Music</h3>
+                <p>在灵动岛查看专辑封面和进度，用遥控器播放、暂停或切歌。</p>
+                <span class="store-item-meta">音乐 · <span data-release-version="apple-music">1.5.0</span></span>
+              </div>
+              <div class="store-item-actions">
+                <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-AppleMusic-1.5.0-macos-arm64.zip" data-release-artifact="apple-music" aria-label="下载 Apple Music 1.5.0 ZIP">获取</a>
+                <button type="button" class="store-details-button" data-plugin-details="music-details" aria-label="查看 Apple Music 详情" aria-haspopup="dialog" hidden>查看详情</button>
+              </div>
+            </li>
+            <li class="store-item" data-plugin-category="system" data-keywords="系统快控 系统工具 亮度 锁屏 音频 声音输出 扬声器 耳机 蓝牙">
+              <div class="store-icon store-icon-system" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <div class="store-item-info">
+                <h3>系统快控</h3>
+                <p>在灵动岛调亮度、锁屏、切换声音输出或打开蓝牙设置。</p>
+                <span class="store-item-meta">系统工具 · <span data-release-version="system-controls">1.1.2</span></span>
+              </div>
+              <div class="store-item-actions">
+                <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-SystemControls-1.1.2-macos-arm64.zip" data-release-artifact="system-controls" aria-label="下载系统快控 1.1.2 ZIP">获取</a>
+                <button type="button" class="store-details-button" data-plugin-details="system-details" aria-label="查看系统快控详情" aria-haspopup="dialog" hidden>查看详情</button>
+              </div>
+            </li>
+          </ul>
+
+          <div class="store-empty" id="store-empty" hidden>
+            <h3>找不到匹配的插件</h3>
+            <p>试试其他关键词，或清除筛选查看全部插件。</p>
+            <button type="button" class="btn btn-glass store-get" id="store-reset">清除筛选</button>
+          </div>
+        </section>
+      </div>
+
+      <section class="card store-install" id="install" aria-labelledby="install-title">
+        <h2 id="install-title">安装指南</h2>
+        <ol>
+          <li><strong>获取插件</strong><p>下载 ZIP 后解压，在 Finder 中找到 <code>.bundle</code> 文件。</p></li>
+          <li><strong>开启开发者模式</strong><p>当前下载包为临时签名。在 RemoteFlow 的菜单插件管理中打开「安全」，开启「开发者模式」。</p></li>
+          <li><strong>导入到 RemoteFlow</strong><p>选择「安装插件」，导入 <code>.bundle</code> 文件，再打开灵动岛。</p></li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="22" height="22">RemoteFlow</a>
+    <a class="to-top" href="index.html#island">查看灵动岛演示 <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <dialog class="dialog store-detail" id="music-details" aria-labelledby="music-title">
+    <form method="dialog"><button class="dialog-close" aria-label="关闭详情" autofocus>×</button></form>
+    <div class="store-detail-content">
+      <header class="store-detail-heading">
+        <h2 id="music-title">Apple Music</h2>
+        <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-AppleMusic-1.5.0-macos-arm64.zip" data-release-artifact="apple-music" aria-label="下载 Apple Music 1.5.0 ZIP">获取</a>
+      </header>
+      <dl class="store-detail-meta">
+        <div><dt>开发者</dt><dd>RemoteFlow</dd></div>
+        <div><dt>版本</dt><dd data-release-version="apple-music">1.5.0</dd></div>
+        <div><dt>兼容性</dt><dd>Apple 芯片 Mac · macOS 14+</dd></div>
+        <div><dt>安装包</dt><dd data-release-size="apple-music">ZIP · 36 KB</dd></div>
+      </dl>
+      <div class="store-detail-body">
+        <figure class="store-detail-preview"><img src="assets/island-music-card.png" width="360" height="360" alt="Apple Music 灵动岛卡片，显示专辑封面、曲目与播放进度"></figure>
+        <div>
+          <h3>功能</h3>
+          <ul>
+            <li>按上、下键切换曲目，按确定播放或暂停。</li>
+            <li>显示专辑封面、曲目和播放进度。</li>
+            <li>支持 Apple Music 订阅曲目及「音乐」App 的本地资料库。</li>
+          </ul>
+          <h3>首次使用</h3>
+          <p>在卡片上按确定，按系统提示授权 RemoteFlow 控制「音乐」。</p>
+          <a href="#install">查看安装指南 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog store-detail" id="system-details" aria-labelledby="system-title">
+    <form method="dialog"><button class="dialog-close" aria-label="关闭详情" autofocus>×</button></form>
+    <div class="store-detail-content">
+      <header class="store-detail-heading">
+        <h2 id="system-title">系统快控</h2>
+        <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-SystemControls-1.1.2-macos-arm64.zip" data-release-artifact="system-controls" aria-label="下载系统快控 1.1.2 ZIP">获取</a>
+      </header>
+      <dl class="store-detail-meta">
+        <div><dt>开发者</dt><dd>RemoteFlow</dd></div>
+        <div><dt>版本</dt><dd data-release-version="system-controls">1.1.2</dd></div>
+        <div><dt>兼容性</dt><dd>Apple 芯片 Mac · macOS 14+</dd></div>
+        <div><dt>安装包</dt><dd data-release-size="system-controls">ZIP · 89 KB</dd></div>
+      </dl>
+      <div class="store-detail-body">
+        <figure class="store-detail-preview">
+          <div class="store-controls-crop"><img src="assets/island-controls.webp" width="1734" height="552" alt="系统快控的亮度、锁屏、声音输出和连接蓝牙卡片"></div>
+        </figure>
+        <div>
+          <h3>功能</h3>
+          <ul>
+            <li>在亮度卡片上用遥控器音量键调节亮度。</li>
+            <li>锁屏、切换声音输出设备或打开蓝牙配对设置。</li>
+          </ul>
+          <h3>使用要求</h3>
+          <p>锁屏需要辅助功能权限。亮度调节取决于显示器支持情况。</p>
+          <a href="#install">查看安装指南 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

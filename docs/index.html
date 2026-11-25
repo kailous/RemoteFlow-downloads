@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="RemoteFlow 把小米蓝牙遥控器 2 Pro 变成 Mac 的指挥棒：按键与语音触发动作链，语音在设备端识别、全程本机完成，灵动岛卡片导航。macOS 14+。">
+  <title>RemoteFlow · 你的 Mac，多了一个遥控器</title>
+  <link rel="icon" href="assets/app-icon.png" type="image/png">
+  <link rel="preload" href="assets/hero-remote-upright.webp" as="image">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="release-downloads.js" defer></script>
+  <script src="site.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="nav" data-header>
+    <div class="nav-inner">
+      <a class="wordmark" href="#top"><img src="assets/app-icon.png" alt="" width="26" height="26">RemoteFlow</a>
+      <nav aria-label="主导航">
+        <a href="#keys">按键</a><a href="#demo">动作编排</a><a href="#island">灵动岛</a><a href="#privacy">隐私</a><a href="#faq">常见问题</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-store-link" href="plugins.html">插件商店</a>
+        <a class="btn btn-small btn-primary" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-1.5.0-beta.1-macos-arm64.zip" data-release-artifact="app" aria-label="下载 RemoteFlow Mac 版">下载</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy wrap">
+        <p class="eyebrow" data-reveal><span class="live-dot" aria-hidden="true"></span>适配小米蓝牙遥控器 2 Pro · macOS 14+</p>
+        <h1 id="hero-title" data-reveal style="--d:1">你的 Mac，<br><span class="nowrap">多了一个<em>遥控器</em>。</span></h1>
+        <p class="hero-sub" data-reveal style="--d:2">窝在沙发上说一句口令，或者按一个键——打开应用、切歌、写备忘、呼出灵动岛，一整串动作自动完成。</p>
+        <div class="hero-cta" data-reveal style="--d:3">
+          <a class="btn btn-primary" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-1.5.0-beta.1-macos-arm64.zip" data-release-artifact="app">下载 Mac 版</a>
+          <a class="btn btn-ghost" href="#demo">看看怎么用 <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <div class="hero-stage" data-reveal style="--d:2">
+        <div class="hero-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img class="hero-remote" src="assets/hero-remote-upright.webp" alt="小米蓝牙遥控器 2 Pro，顶部是语音键和电源键" width="298" height="853">
+
+        <div class="bubble bubble-voice" aria-hidden="true">
+          <span class="bubble-icon mic"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+          <div>
+            <small>语音 · 设备端识别</small>
+            <strong>“开始写作”</strong>
+          </div>
+          <span class="wave"><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+
+        <div class="bubble bubble-chain" aria-hidden="true">
+          <small>动作序列 · 3 步</small>
+          <ol>
+            <li class="done"><b>1</b>打开应用<span>备忘录</span></li>
+            <li class="done"><b>2</b>等待<span>300 ms</span></li>
+            <li class="running"><b>3</b>输入文本<span>今天的灵感</span></li>
+          </ol>
+        </div>
+
+        <div class="bubble bubble-key" aria-hidden="true">
+          <span class="bubble-icon key"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5h-5v5H5a1 1 0 0 1-1-1z"/></svg></span>
+          <div>
+            <small>主页键 · 单击</small>
+            <strong>浮动菜单已打开</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats wrap" aria-label="产品规格">
+      <dl data-reveal>
+        <div><dt>动作类型</dt><dd>13<span>种</span></dd></div>
+        <div><dt>按键手势</dt><dd>4<span>种</span></dd></div>
+        <div><dt>语音识别</dt><dd>本机<span>完成</span></dd></div>
+        <div><dt>系统要求</dt><dd>macOS<span>14+</span></dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ KEYS ============ -->
+    <section class="section" id="keys" aria-labelledby="keys-title">
+      <header class="section-head wrap" data-reveal>
+        <p class="kicker">按键</p>
+        <h2 id="keys-title">每一个键，<br>都由你来定义。</h2>
+        <p>单击、双击、长按、按住同步，同一个键在不同应用里可以做完全不同的事。</p>
+      </header>
+      <figure class="keys-figure wrap" data-reveal>
+        <div class="keys-photo">
+          <img src="assets/hero-remote.png" alt="手持小米蓝牙遥控器 2 Pro" width="1560" height="586" loading="lazy">
+        </div>
+        <figcaption>
+          <ul class="keys-legend">
+            <li><b>语音键</b><span>说出口令，设备端识别</span></li>
+            <li><b>电源键</b><span>锁屏、唤醒或解锁</span></li>
+            <li><b>方向键</b><span>操作灵动岛与菜单</span></li>
+            <li><b>音量键</b><span>调音量，也能调亮度</span></li>
+            <li><b>主页键</b><span>回桌面，呼出浮动菜单</span></li>
+          </ul>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ STEPS ============ -->
+    <section class="section section-tight" id="how" aria-labelledby="how-title">
+      <header class="section-head wrap" data-reveal>
+        <p class="kicker">上手</p>
+        <h2 id="how-title">三步，就能用起来。</h2>
+      </header>
+      <ol class="steps wrap">
+        <li class="card step" data-reveal>
+          <span class="step-no">01</span>
+          <h3>连上遥控器</h3>
+          <p>蓝牙配对小米遥控器 2 Pro（RC003），按提示授权输入监控和语音识别。</p>
+        </li>
+        <li class="card step" data-reveal style="--d:1">
+          <span class="step-no">02</span>
+          <h3>编排动作</h3>
+          <p>选一个按键或一句口令当触发器，再给它排一条动作链，顺序由你定。</p>
+        </li>
+        <li class="card step" data-reveal style="--d:2">
+          <span class="step-no">03</span>
+          <h3>按下，或说出口</h3>
+          <p>动作链在 Mac 上一步步执行。改了配置，随时点「运行测试」验证。</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ DEMO (1:1 SwiftUI / Figma 还原) ============ -->
+    <section class="section" id="demo" aria-labelledby="demo-title">
+      <header class="section-head wrap" data-reveal>
+        <p class="kicker">动作编排</p>
+        <h2 id="demo-title">触发器 + 动作链，<br>就这么简单。</h2>
+        <p>下面是 RemoteFlow 主界面的 1:1 可交互模拟。选一个触发器，改改参数，点「运行测试」。</p>
+      </header>
+
+      <div class="demo wrap-app" data-reveal>
+        <div class="native-window">
+          <div class="traffic-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+          <header class="native-header">
+            <div class="native-brand">
+              <img src="assets/app-icon.png" alt="" width="50" height="50">
+              <div>
+                <div class="native-title-line"><strong>RemoteFlow</strong><span>v1.5</span></div>
+                <p>用遥控器编排你的 macOS 操作</p>
+              </div>
+            </div>
+            <div class="native-toolbar" aria-label="应用工具栏">
+              <div class="native-connection">
+                <button type="button" aria-label="遥控器已连接" title="遥控器已连接 · 监听就绪">
+                  <svg viewBox="0 0 18 28" aria-hidden="true"><path d="M1.16 22.68C1.16 23.95 2.03 24.78 3.38 24.78h5.24c1.37 0 2.22-.83 2.22-2.1V5.33c0-1.29-.85-2.11-2.22-2.11H3.38C2.03 3.22 1.16 4.04 1.16 5.33v17.35ZM6 16.65a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5Zm0-3.84a3.32 3.32 0 1 1 0-6.64 3.32 3.32 0 0 1 0 6.64Zm0-1.99a1.34 1.34 0 1 0 0-2.68 1.34 1.34 0 0 0 0 2.68Z" transform="translate(3 -1)" fill="#00CA48"/></svg>
+                </button>
+                <span class="native-conn-sep" aria-hidden="true"></span>
+                <button type="button" aria-label="语音识别就绪" title="遥控器麦克风与设备端语音识别就绪">
+                  <svg viewBox="0 0 20 26" aria-hidden="true"><path d="M16.23 10.6c.42 0 .75.33.75.74v1.98c0 3.81-2.5 6.51-6.26 6.82v2.28h3.63a.74.74 0 1 1 0 1.48H5.63a.74.74 0 1 1 0-1.48h3.61v-2.28C5.5 19.82 3 17.13 3 13.32v-1.98a.74.74 0 0 1 1.48 0v1.92c0 3.32 2.17 5.54 5.51 5.54 3.34 0 5.51-2.22 5.51-5.54v-1.92c0-.41.33-.74.73-.74Z" fill="#00CA48"/><path fill-rule="evenodd" clip-rule="evenodd" d="M9.99 3c2.1 0 3.55 1.57 3.55 3.83v6.14c0 2.25-1.45 3.82-3.55 3.82-2.11 0-3.55-1.57-3.55-3.82V6.83C6.44 4.57 7.88 3 9.99 3Z" fill="#00CA48"/></svg>
+                </button>
+              </div>
+              <a href="#island" class="native-tool-link" aria-label="查看灵动岛演示" title="跳转至灵动岛演示">
+                <svg viewBox="0 0 28 24" aria-hidden="true"><path d="M5.55 20.99h16.89c2.05 0 3.07-1.02 3.07-3.03V6.04c0-2.01-1.02-3.03-3.07-3.03H5.55c-2.03 0-3.06 1.02-3.06 3.03v11.92c0 2.01 1.03 3.03 3.06 3.03Zm.03-1.58c-.98 0-1.52-.52-1.52-1.53V6.12c0-1.02.54-1.53 1.52-1.53h16.84c.97 0 1.52.51 1.52 1.53v11.76c0 1.01-.55 1.53-1.52 1.53H5.58Z" fill="#fff"/><path d="M8.65 16.46h10.7c.68 0 .97-.3.97-1V8.53c0-.7-.29-.99-.97-.99H8.65c-.68 0-.96.3-.96.99v6.93c0 .7.28 1 .96 1Z" fill="#fff"/></svg>
+              </a>
+              <button type="button" aria-label="应用设置" title="应用设置">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.1 22.2h1.8c.5 0 .87-.3 1-.8l.5-2.14c.38-.13.74-.27 1.07-.43l1.88 1.16c.42.26.9.22 1.25-.13l1.26-1.25c.35-.36.4-.86.11-1.29l-1.15-1.86c.16-.33.31-.7.42-1.04l2.17-.51c.5-.12.79-.48.79-1v-1.76c0-.5-.3-.86-.79-.98l-2.15-.52c-.13-.4-.29-.75-.42-1.05l1.15-1.9c.26-.43.24-.9-.12-1.26l-1.28-1.26c-.35-.32-.8-.4-1.21-.14l-1.91 1.18c-.32-.16-.69-.3-1.08-.43l-.5-2.18c-.13-.5-.5-.8-1-.8h-1.8c-.5 0-.87.3-.99.8l-.51 2.16c-.37.13-.76.27-1.08.44L6.62 4.03c-.42-.26-.88-.2-1.22.15L4.12 5.44c-.36.36-.38.82-.12 1.26l1.15 1.89c-.13.3-.29.65-.41 1.05l-2.15.52c-.5.12-.79.48-.79.98v1.76c0 .52.29.88.79 1l2.17.51c.1.34.25.71.41 1.04l-1.15 1.86c-.28.43-.23.93.12 1.29l1.26 1.25c.34.35.83.39 1.25.13l1.88-1.16c.32.16.7.3 1.07.43l.51 2.15c.12.5.48.8 1 .8Zm.9-6.75a3.45 3.45 0 1 1 0-6.9 3.45 3.45 0 0 1 0 6.9Z" fill="#fff"/></svg>
+              </button>
+            </div>
+          </header>
+
+          <div class="native-layout">
+            <aside class="native-scopes" aria-labelledby="scopes-title">
+              <div class="native-caption"><h2 id="scopes-title">工作空间</h2><span id="scope-count">07</span></div>
+              <div id="scope-list" class="native-scroll"></div>
+              <div class="native-footer">
+                <button class="native-add" id="add-scope" type="button">
+                  <svg class="icon-add-box" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="5" fill="#006AFF"/><path d="M8 12h10v2H8v-2Zm4 6V8h2v10h-2Z" fill="#fff"/></svg>
+                  <span>接入应用</span>
+                </button>
+                <button type="button" id="remove-scope" class="native-trash" aria-label="删除选中的应用配置" disabled>
+                  <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11.4 6c.28 0 .46.18.45.44l-.22 7.83c0 .26-.2.43-.45.43-.28 0-.47-.18-.46-.43l.22-7.83c.01-.26.2-.44.46-.44ZM6.6 6c.27 0 .45.17.46.43l.23 7.83c0 .26-.17.44-.46.44-.26 0-.44-.17-.45-.43L6.15 6.44C6.14 6.18 6.33 6 6.6 6ZM9 6c.28 0 .47.18.47.44v7.82c0 .26-.19.44-.47.44-.28 0-.47-.18-.47-.44V6.44C8.53 6.18 8.72 6 9 6Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10.38.75c1.13 0 1.82.65 1.82 1.71v1.12h3.34c.3 0 .55.24.55.55 0 .3-.24.55-.55.55h-.87l-.5 10.65c-.06 1.05-.76 1.72-1.81 1.72H5.65c-1.06 0-1.75-.66-1.8-1.72L3.33 4.68h-.87a.55.55 0 0 1 0-1.1h3.33V2.46C5.79 1.4 6.48.75 7.6.75h2.78ZM4.99 15.2c.02.44.34.75.76.75h6.49c.44 0 .75-.3.77-.75l.48-10.52H4.48l.51 10.52Zm2.69-13.36c-.44 0-.73.27-.73.7v1.04h4.08V2.53c0-.42-.29-.69-.72-.69H7.68Z" fill="currentColor"/></svg>
+                </button>
+              </div>
+            </aside>
+
+            <div class="native-center">
+              <section class="native-events" aria-labelledby="events-title">
+                <div class="native-heading"><div><h2 id="events-title">触发器</h2><p id="event-scope">全局</p></div><span id="event-count">07</span></div>
+                <div id="event-list" class="native-scroll"></div>
+                <div class="native-footer">
+                  <div class="native-select-button">
+                    <svg class="icon-add-box" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="5" fill="#006AFF"/><path d="M8 12h10v2H8v-2Zm4 6V8h2v10h-2Z" fill="#fff"/></svg>
+                    <b aria-hidden="true">添加触发器</b>
+                    <select id="add-event" aria-label="添加触发器">
+                      <option value="" selected disabled>添加触发器</option>
+                      <option value="button">按键触发</option>
+                      <option value="voice">语音触发</option>
+                    </select>
+                  </div>
+                  <button type="button" id="remove-event" class="native-trash" aria-label="删除所选触发器">
+                    <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M11.4 6c.28 0 .46.18.45.44l-.22 7.83c0 .26-.2.43-.45.43-.28 0-.47-.18-.46-.43l.22-7.83c.01-.26.2-.44.46-.44ZM6.6 6c.27 0 .45.17.46.43l.23 7.83c0 .26-.17.44-.46.44-.26 0-.44-.17-.45-.43L6.15 6.44C6.14 6.18 6.33 6 6.6 6ZM9 6c.28 0 .47.18.47.44v7.82c0 .26-.19.44-.47.44-.28 0-.47-.18-.47-.44V6.44C8.53 6.18 8.72 6 9 6Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10.38.75c1.13 0 1.82.65 1.82 1.71v1.12h3.34c.3 0 .55.24.55.55 0 .3-.24.55-.55.55h-.87l-.5 10.65c-.06 1.05-.76 1.72-1.81 1.72H5.65c-1.06 0-1.75-.66-1.8-1.72L3.33 4.68h-.87a.55.55 0 0 1 0-1.1h3.33V2.46C5.79 1.4 6.48.75 7.6.75h2.78ZM4.99 15.2c.02.44.34.75.76.75h6.49c.44 0 .75-.3.77-.75l.48-10.52H4.48l.51 10.52Zm2.69-13.36c-.44 0-.73.27-.73.7v1.04h4.08V2.53c0-.42-.29-.69-.72-.69H7.68Z" fill="currentColor"/></svg>
+                  </button>
+                </div>
+              </section>
+
+              <section class="native-automation" aria-labelledby="chain-title">
+                <div class="native-heading native-heading-auto">
+                  <div><h2 id="chain-title">动作序列</h2><p id="chain-summary"></p></div>
+                  <label class="native-switch"><span>激活</span><input type="checkbox" id="event-enabled" role="switch" checked></label>
+                </div>
+                <ol id="chain" class="chain native-scroll" aria-label="动作序列"></ol>
+                <div class="native-footer">
+                  <div class="native-select-button">
+                    <svg class="icon-add-box" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" rx="5" fill="#006AFF"/><path d="M8 12h10v2H8v-2Zm4 6V8h2v10h-2Z" fill="#fff"/></svg>
+                    <b aria-hidden="true">添加动作</b>
+                    <select id="action-picker" aria-label="添加动作"></select>
+                  </div>
+                  <button id="run-workflow" class="native-run" type="button">
+                    <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3.75 14.08c0 .72.42 1.07.92 1.07.21 0 .45-.07.67-.19l8.53-4.99c.6-.35.81-.59.81-.97 0-.39-.21-.62-.81-.98L5.34 3.04a1.38 1.38 0 0 0-.67-.19c-.5 0-.92.34-.92 1.07v10.16Z" fill="#fff"/></svg>
+                    <span>运行测试</span>
+                  </button>
+                </div>
+              </section>
+            </div>
+
+            <section class="native-inspector" aria-labelledby="inspector-title">
+              <div class="native-heading native-heading-insp"><div><h2 id="inspector-title">配置</h2><p id="inspector-summary"></p></div></div>
+              <div id="native-config" class="native-scroll">
+                <div class="inspector-group">
+                  <p>基础设置</p>
+                  <div class="inspector-box">
+                    <label class="field"><span>事件名称</span><input id="event-name" maxlength="36"></label>
+                    <div class="field"><span>事件类型</span>
+                      <div class="native-segments" role="group" aria-label="事件类型">
+                        <button type="button" data-source="button" aria-pressed="true">
+                          <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M8.97 16.43a7.47 7.47 0 1 0 0-14.93 7.47 7.47 0 0 0 0 14.93Zm0-1.24a6.22 6.22 0 1 1 0-12.45 6.22 6.22 0 0 1 0 12.45Z" fill="currentColor"/><circle cx="8.96" cy="8.97" r="5.11" fill="currentColor"/></svg>
+                          <span>按键触发</span>
+                        </button>
+                        <button type="button" data-source="voice" aria-pressed="false">
+                          <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M15.15 11.48c.34 0 .59-.26.59-.59V7.41c0-.33-.25-.6-.59-.6-.34 0-.59.27-.59.6v3.48c0 .33.25.6.59.6ZM12.69 15.17c.33 0 .59-.26.59-.59V3.72c0-.33-.26-.6-.59-.6-.34 0-.59.27-.59.6v10.86c0 .33.25.6.59.6ZM10.22 12.96c.34 0 .59-.26.59-.59V5.93c0-.32-.25-.59-.59-.59-.33 0-.59.27-.59.6v6.43c0 .33.26.6.59.6ZM7.76 16.8c.33 0 .59-.26.59-.59V2.1c0-.33-.26-.6-.6-.6-.33 0-.58.27-.58.6v14.11c0 .33.25.6.59.6ZM5.3 13.85c.34 0 .6-.27.6-.6V5.05c0-.33-.26-.6-.6-.6-.34 0-.59.27-.59.6v8.2c0 .33.25.6.59.6ZM2.83 10.85c.34 0 .6-.26.6-.59V8.04c0-.33-.26-.6-.6-.6-.33 0-.58.27-.58.6v2.22c0 .33.25.6.58.6Z" fill="currentColor"/></svg>
+                          <span>语音触发</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="inspector-group" id="button-fields">
+                  <p>遥控器按键</p>
+                  <div class="inspector-box">
+                    <label class="field"><span>按键</span><div class="select-wrap"><select id="trigger"></select></div></label>
+                    <label class="field"><span>手势</span><div class="select-wrap"><select id="gesture"></select></div></label>
+                    <label class="native-check"><input type="checkbox" id="focus-priority"> 输入框聚焦时优先</label>
+                  </div>
+                </div>
+                <div class="inspector-group" id="voice-fields" hidden>
+                  <p>语音指令</p>
+                  <div class="inspector-box">
+                    <div class="field"><span>匹配模式</span>
+                      <div class="native-segments single-seg">
+                        <button type="button" aria-pressed="true" tabindex="-1">
+                          <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="8.91" cy="8.92" r="1.24" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M8.91.01c.29 0 .52.23.52.53v1.47a6.94 6.94 0 0 1 6.36 6.38h1.49a.53.53 0 0 1 0 1.05h-1.49a6.94 6.94 0 0 1-6.36 6.35v1.5a.52.52 0 1 1-1.05 0v-1.5a6.94 6.94 0 0 1-6.36-6.35H.53a.53.53 0 0 1 0-1.05h1.49A6.94 6.94 0 0 1 8.38 2.01V.54c0-.3.23-.53.53-.53Zm.52 5.49a.52.52 0 1 1-1.05 0v-2.3A5.78 5.78 0 0 0 3.2 8.39h2.28a.53.53 0 0 1 0 1.05H3.2a5.78 5.78 0 0 0 5.18 5.17v-2.27a.52.52 0 1 1 1.05 0v2.27a5.78 5.78 0 0 0 5.18-5.17h-2.28a.53.53 0 0 1 0-1.05h2.28A5.78 5.78 0 0 0 9.43 3.2v2.3Z" fill="currentColor"/></svg>
+                          <span>智能匹配</span>
+                        </button>
+                      </div>
+                      <small class="field-hint">容忍中英空格、大小写、同音字和少量识别偏差</small>
+                    </div>
+                    <label class="field"><span>触发短语</span><input id="phrase" maxlength="36"></label>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <noscript><p class="noscript">开启 JavaScript 即可操作演示界面。</p></noscript>
+        </div>
+
+        <div class="demo-status">
+          <span class="demo-badge">界面模拟 · 不会真的执行操作</span>
+          <p id="run-message" role="status">选一个触发器，点「运行测试」试试。</p>
+          <a id="result-island" href="#island" hidden>去操作灵动岛 →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CATALOG ============ -->
+    <section class="section section-tight" id="actions" aria-labelledby="actions-title">
+      <header class="section-head wrap" data-reveal>
+        <p class="kicker">动作目录</p>
+        <h2 id="actions-title"><span id="action-total">13</span> 种动作，<br>覆盖日常所需。</h2>
+        <p>从打开应用到解锁屏幕，自由组合成你自己的工作流。</p>
+      </header>
+      <div class="catalog wrap" id="catalog" data-reveal></div>
+      <p class="legacy-note wrap">旧版兼容动作「唤醒屏幕以解锁」仍可在已有流程中运行，当前动作菜单已移除这个独立入口。</p>
+    </section>
+
+    <!-- ============ ISLAND (1:1 SwiftUI FloatingMenuView · 视口自动展开 + 全局键盘操控 + 浮动按键说明) ============ -->
+    <section class="section section-island" id="island" aria-labelledby="island-title">
+      <header class="section-head wrap" data-reveal>
+        <p class="kicker">灵动岛</p>
+        <h2 id="island-title">从刘海自然展开，<br>手不离遥控器。</h2>
+        <p>滚到这里时自动从顶部刘海生长展开。直接按键盘方向键、回车与 Esc，就能像握着遥控器一样浏览和操控。</p>
+      </header>
+
+      <div class="island-demo wrap-wide" id="island-demo" data-reveal>
+        <div class="island-screen">
+          <img class="island-machine" src="assets/island-macbook.png" alt="打开的 MacBook，屏幕上显示 RemoteFlow 的灵动岛卡片" width="2072" height="1264" loading="lazy">
+          <img class="island-wallpaper" src="assets/island-wallpaper.webp" alt="" aria-hidden="true" width="1600" height="1039" loading="lazy">
+
+          <!-- macOS 状态栏，衬托物理刘海位置 -->
+          <div class="mac-menubar" aria-hidden="true">
+            <div class="mac-mb-left">
+              <svg class="apple-logo" viewBox="0 0 16 18"><path d="M12.6 9.5c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.7-1.3-.1-2.5.8-3.1.8-.7 0-1.7-.8-2.8-.7-1.4 0-2.8.8-3.5 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.7.7 2.8.7 1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.5-.1 0-2.6-1-2.6-3.4ZM10.4 3.2c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.5.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2Z" fill="currentColor"/></svg>
+              <strong>RemoteFlow</strong><span>文件</span><span>编辑</span><span>显示</span><span>窗口</span>
+            </div>
+            <div class="mac-mb-right">
+              <span>100%</span><span>周三 14:20</span>
+            </div>
+          </div>
+
+          <!-- 物理刘海常驻胶囊（点击可切换收起/呼出） -->
+          <button type="button" class="mac-notch" id="island-notch" aria-label="点击刘海呼出或收起灵动岛">
+            <span class="notch-cam" aria-hidden="true"></span>
+          </button>
+
+          <!-- FloatingMenuView: 初始为 collapsed，滚入视口时自动弹簧生长展开 -->
+          <div id="island-menu" class="island-menu" data-state="collapsed" tabindex="0" role="group" aria-label="灵动岛演示：按键盘方向键选择，回车确定，Esc 收起">
+            <div class="island-body">
+              <div id="island-viewport" class="island-viewport" data-fade-left="true" data-fade-right="false">
+                <div id="island-track" class="island-track">
+                  <button type="button" class="icard media video" aria-pressed="false" aria-label="视频续播：在下打更人">
+                    <img src="assets/island-video-full.webp" alt="在下打更人 3 · 0:11 / 11:45" width="640" height="360">
+                  </button>
+                  <button type="button" class="icard media music" aria-pressed="false" aria-label="Apple Music，已暂停">
+                    <img src="assets/island-music-card.png" alt="Apple Music 卡片：深夜一角 · 毛不易" width="360" height="360">
+                  </button>
+                  <button type="button" class="icard media bangumi" aria-pressed="false" aria-label="追番">
+                    <img src="assets/island-bangumi-card.png" alt="追番卡片：暂无新集 · 收藏与追番已检查" width="520" height="360">
+                  </button>
+                  <div class="island-grid">
+                    <button type="button" class="icard tile brightness" aria-pressed="true" aria-label="亮度 54%">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2.2v2.4M12 19.4v2.4M2.2 12h2.4M19.4 12h2.4M5.1 5.1l1.7 1.7M17.2 17.2l1.7 1.7M5.1 18.9l1.7-1.7M17.2 6.8l1.7-1.7"/></g></svg>
+                      <span class="t">亮度</span><span class="d" id="island-brightness">54%</span>
+                    </button>
+                    <button type="button" class="icard tile lock" aria-pressed="false" aria-label="锁屏">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2.5" fill="currentColor"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+                      <span class="t">锁屏</span>
+                    </button>
+                    <button type="button" class="icard tile audio" aria-pressed="false" aria-label="声音输出">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5H4z" fill="currentColor"/><path d="M15.8 8.6a4.6 4.6 0 0 1 0 6.8M18.5 6a8.2 8.2 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                      <span class="t">声音输出</span>
+                    </button>
+                    <button type="button" class="icard tile bluetooth" aria-pressed="false" aria-label="连接蓝牙">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.2 13.8a4.2 4.2 0 0 0 6 0l1.6-1.6a4.2 4.2 0 0 0-6-6l-1 1M13.8 10.2a4.2 4.2 0 0 0-6 0l-1.6 1.6a4.2 4.2 0 0 0 6 6l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="17.5" cy="17.5" r="3.8" fill="currentColor"/><path d="M17.5 15.7v3.6M15.7 17.5h3.6" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      <span class="t">连接蓝牙</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 声音输出替换模式 (ControlsView.outputMenu: 204×172pt) -->
+              <div id="island-list" class="island-list" hidden>
+                <strong>声音输出</strong>
+                <div class="island-list-rows">
+                  <button type="button" class="row focused current" data-sound="0">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5H4z" fill="currentColor"/><path d="M15.8 8.6a4.6 4.6 0 0 1 0 6.8M18.5 6a8.2 8.2 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span>MacBook Pro 扬声器</span>
+                    <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.6l4.4 4.4L19 7.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button type="button" class="row" data-sound="1">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5H4z" fill="currentColor"/><path d="M15.8 8.6a4.6 4.6 0 0 1 0 6.8M18.5 6a8.2 8.2 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span>AirPods Pro</span>
+                    <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.6l4.4 4.4L19 7.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button type="button" class="row" data-sound="2">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h3.5L12 19V5L7.5 9.5H4z" fill="currentColor"/><path d="M15.8 8.6a4.6 4.6 0 0 1 0 6.8M18.5 6a8.2 8.2 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    <span>客厅 HomePod</span>
+                    <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.6l4.4 4.4L19 7.4" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <footer class="island-footer">
+                <span id="island-counter">04 / 07</span>
+                <div class="island-foot-right">
+                  <span class="island-foot-hint">
+                    <svg class="dpad" viewBox="0 0 16 16" aria-hidden="true"><rect x="6" y="1" width="4" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><rect x="6" y="11" width="4" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="6" width="4" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/><rect x="11" y="6" width="4" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+                    <span id="island-nav-hint">选择</span>
+                  </span>
+                  <span id="island-card-hint">音量 ＋／− 调亮度</span>
+                  <button type="button" class="island-back" id="island-close-btn">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 10L2.5 6.5 6 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.8 6.5H9.5a4 4 0 0 1 4 4v1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span id="island-close-label">关闭</span>
+                  </button>
+                </div>
+              </footer>
+            </div>
+          </div>
+
+          <!-- 灵动岛下方的浮动文字提示：实时反馈当前卡片、说明与键盘按键提示 -->
+          <div class="island-float-guide" id="island-guide" aria-live="polite">
+            <p class="island-float-status" id="island-status">亮度 54% · 按 ＋ / − 键实时调节屏幕亮度</p>
+            <div class="island-float-keys" id="island-keyhints" aria-label="键盘操作提示">
+              <span data-kh="arrows"><kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> 选择卡片</span>
+              <span data-kh="volume"><kbd>−</kbd><kbd>＋</kbd> 调节亮度</span>
+              <span data-kh="enter"><kbd>Enter</kbd> 确定执行</span>
+              <span data-kh="esc"><kbd>Esc</kbd> 收起回刘海</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRIVACY ============ -->
+    <section class="section" id="privacy" aria-labelledby="privacy-title">
+      <div class="privacy wrap" data-reveal>
+        <div class="privacy-copy">
+          <p class="kicker">隐私</p>
+          <h2 id="privacy-title">你说的每一句，<br>只留在你的 Mac 上。</h2>
+          <p>声音由遥控器采集，经蓝牙送到 Mac，在设备端完成识别。不用 Mac 的麦克风，不经过任何服务器。</p>
+        </div>
+        <ol class="privacy-flow" aria-label="语音数据流向">
+          <li>
+            <span class="pf-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+            <b>遥控器采集</b><small>按住语音键说话</small>
+          </li>
+          <li class="pf-link" aria-hidden="true"><span>蓝牙</span></li>
+          <li>
+            <span class="pf-icon pf-mac"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M1.5 19.5h21"/></svg></span>
+            <b>Mac 本机识别</b><small>设备端语音识别</small>
+          </li>
+          <li class="pf-link pf-cut" aria-hidden="true"><span>✕</span></li>
+          <li class="pf-off">
+            <span class="pf-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4.5 4.5 0 0 1-.5-9 6 6 0 0 1 11.5 1.5A3.75 3.75 0 0 1 17.5 18z"/><path d="M4 4l16 16"/></svg></span>
+            <b>云端服务器</b><small>从不上传</small>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section section-tight" id="faq" aria-labelledby="faq-title">
+      <div class="faq wrap">
+        <header class="faq-head" data-reveal>
+          <p class="kicker">常见问题</p>
+          <h2 id="faq-title">还有疑问？</h2>
+          <p>设备、权限、语音，一次说清。</p>
+        </header>
+        <div class="faq-list" data-reveal style="--d:1">
+          <details class="faq-item" name="faq" open><summary>我需要准备什么？</summary><p>一台升级到 macOS 14 或更高版本的 Mac，和一支小米蓝牙遥控器 2 Pro（RC003）。没了。</p></details>
+          <details class="faq-item" name="faq"><summary>装完要开哪些权限？</summary><p>蓝牙用来连遥控器，输入监控用来听按键，语音识别用来听懂口令，辅助功能用来发快捷键和聚焦控件。安装时 RemoteFlow 会一步步带你开。</p></details>
+          <details class="faq-item" name="faq"><summary>语音会用 Mac 的麦克风吗？</summary><p>不会。声音在遥控器上采集，通过蓝牙送到 Mac，在本机完成识别，不经过任何服务器。</p></details>
+          <details class="faq-item" name="faq"><summary>别人说话会误触发吗？</summary><p>把触发短语设得具体一些（比如「打开工作备忘录」而不是「打开」），误触发会少很多；也可以只用按键触发，完全不受周围说话影响。</p></details>
+          <details class="faq-item" name="faq"><summary>按键手势有哪些？</summary><p>单击、双击、长按、按住同步。按住同步适合「按下执行、松开停止」这类操作。</p></details>
+          <details class="faq-item" name="faq"><summary>改了配置怎么知道行不行？</summary><p>点「运行测试」，RemoteFlow 会把动作链从头到尾模拟一遍，哪一步有问题一眼看到。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DOWNLOAD ============ -->
+    <section class="download-section wrap" id="download" aria-labelledby="download-title">
+      <div class="download" data-reveal>
+        <img class="download-icon" src="assets/app-icon.png" alt="" width="96" height="96" loading="lazy">
+        <h2 id="download-title">现在，拿起遥控器。</h2>
+        <p>Apple 芯片 Mac · macOS 14+ · 小米蓝牙遥控器 2 Pro（RC003）</p>
+        <a class="btn btn-primary btn-large" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-1.5.0-beta.1-macos-arm64.zip" data-release-artifact="app">下载 RemoteFlow</a>
+        <small data-release-status>内测版 · 1.5.0-beta.1</small>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="wordmark" href="#top"><img src="assets/app-icon.png" alt="" width="22" height="22" loading="lazy">RemoteFlow</a>
+    <p>你的 Mac，多了一个遥控器。</p>
+    <a class="to-top" href="#top">回到顶部 ↑</a>
+  </footer>
+
+  <dialog class="dialog" id="scope-dialog" aria-labelledby="scope-dialog-title">
+    <form method="dialog" id="scope-form">
+      <button class="dialog-close" value="cancel" formnovalidate aria-label="关闭">×</button>
+      <h2 id="scope-dialog-title">接入应用</h2>
+      <label class="scope-field">示例应用
+        <select id="scope-picker"><option>Safari</option><option>备忘录</option><option>访达</option><option>日历</option></select>
+      </label>
+      <button class="btn btn-primary" value="add">添加到演示</button>
+    </form>
+  </dialog>
+</body>
+</html>
