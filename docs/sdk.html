@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="RemoteFlow 卡片插件 SDK：下载原生 C ABI + SwiftUI/AppKit SDK，查阅完整接口文档、统一设置指南与示例代码。">
+  <title>Plugin SDK · RemoteFlow</title>
+  <link rel="icon" href="assets/app-icon.png" type="image/png">
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="sdk.css?v=1">
+  <script src="release-downloads.js" defer></script>
+  <script src="sdk-docs-data.js" defer></script>
+  <script src="sdk.js" defer></script>
+</head>
+<body class="sdk-page" id="top">
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="nav sdk-nav" data-header>
+    <div class="nav-inner">
+      <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="26" height="26">RemoteFlow</a>
+      <nav aria-label="主导航">
+        <a href="index.html#keys">按键</a>
+        <a href="index.html#demo">动作编排</a>
+        <a href="index.html#island">灵动岛</a>
+        <a href="index.html#privacy">隐私</a>
+        <a href="index.html#faq">常见问题</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-store-link" href="plugins.html">插件商店</a>
+        <a class="btn btn-small btn-primary" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-1.5.0-beta.1-macos-arm64.zip" data-release-artifact="app" aria-label="下载 RemoteFlow Mac 版">下载</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="sdk-main" id="main">
+    <!-- ============ HERO ============ -->
+    <section class="sdk-hero" aria-labelledby="sdk-title">
+      <div class="wrap">
+        <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span><span>Plugin SDK v<span data-release-version="plugin-sdk">2.3.0</span> · ABI 2 · macOS 14+</span></p>
+        <h1 id="sdk-title">为灵动岛，<br><span class="nowrap">构建你的<em>原生卡片</em>。</span></h1>
+        <p class="sdk-hero-sub">使用 AppKit 或 SwiftUI 自由绘制灵动岛卡片界面；宿主统一负责刘海展开动画、布局排布、遥控焦点与设置面板。</p>
+
+        <div class="sdk-hero-cta">
+          <a class="btn btn-primary" href="downloads/RemoteFlow-PluginSDK-2.3.0.zip" data-release-artifact="plugin-sdk" download>
+            <svg viewBox="0 0 18 18" width="17" height="17" aria-hidden="true"><path d="M9 3v8.5M5.5 8.5 9 12l3.5-3.5M3.5 14.5h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>下载 SDK v<span data-release-version="plugin-sdk">2.3.0</span></span>
+          </a>
+          <a class="btn btn-glass" href="#sdk-docs">阅读开发文档 ↓</a>
+        </div>
+
+        <dl class="sdk-facts">
+          <div><dt>当前版本</dt><dd data-release-version="plugin-sdk">2.3.0</dd></div>
+          <div><dt>插件接口</dt><dd>C ABI 2 + NSView</dd></div>
+          <div><dt>开发语言</dt><dd>SwiftUI / AppKit / ObjC</dd></div>
+          <div><dt>SDK 压缩包</dt><dd data-release-size="plugin-sdk">ZIP · 26 KB</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ HIGHLIGHTS / QUICKSTART ============ -->
+    <section class="sdk-section wrap" aria-labelledby="quickstart-title">
+      <header class="sdk-section-head">
+        <p class="kicker">快速开始</p>
+        <h2 id="quickstart-title">一条命令编译示例插件。</h2>
+        <p>下载解压 SDK 后，直接运行 <code>RichCards</code> 示例构建脚本，导入 RemoteFlow 即可在灵动岛中看到完整卡片与设置面板。</p>
+      </header>
+
+      <div class="sdk-quick-grid" id="sdk-examples">
+        <article class="card sdk-example-card">
+          <div class="sdk-ex-top">
+            <h3>RichCards</h3>
+            <span class="sdk-pill">ABI 2 · 推荐起点</span>
+          </div>
+          <p>完整 ABI 2 原生卡片示例：音乐卡片（封面、播放控制、音量滑块、动态撑开列表）+ 图片卡片 + 统一设置菜单。</p>
+          <div class="sdk-cmd-box">
+            <code>zsh PluginSDK/Examples/RichCards/build.sh /private/tmp/RichCards.bundle</code>
+            <button type="button" class="sdk-copy-btn">复制</button>
+          </div>
+        </article>
+        <article class="card sdk-example-card">
+          <div class="sdk-ex-top">
+            <h3>HelloMenu</h3>
+            <span class="sdk-pill sdk-pill-muted">ABI 1 · 兼容参考</span>
+          </div>
+          <p>ABI 1 快捷菜单示例：演示最小 C 导出入口与动态菜单项，适合纯命令型快捷操作。</p>
+          <div class="sdk-cmd-box">
+            <code>zsh PluginSDK/Examples/HelloMenu/build.sh /private/tmp/HelloMenu.bundle</code>
+            <button type="button" class="sdk-copy-btn">复制</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SDK FILES / HEADERS ============ -->
+    <section class="sdk-section wrap" id="sdk-files" aria-labelledby="files-title">
+      <header class="sdk-section-head">
+        <p class="kicker">SDK 目录</p>
+        <h2 id="files-title">轻量无依赖，头文件即契约。</h2>
+        <p>无需链接任何宿主 Swift 模块或私有 Framework，直接引入对应头文件或源码即可编译。</p>
+      </header>
+      <ul class="sdk-file-grid" id="sdk-header-list"></ul>
+    </section>
+
+    <!-- ============ FULL SYNCED DOCUMENTATION ============ -->
+    <section class="sdk-docs-section wrap" id="sdk-docs" aria-labelledby="docs-title">
+      <header class="sdk-docs-bar">
+        <div>
+          <p class="kicker">完整文档</p>
+          <h2 id="docs-title">从源码仓库实时同步。</h2>
+        </div>
+        <div class="sdk-doc-tabs" id="sdk-doc-tabs" role="tablist" aria-label="SDK 文档章节">
+          <button type="button" role="tab" data-doc-tab="overview" aria-selected="true">总览与 ABI 2 指南</button>
+          <button type="button" role="tab" data-doc-tab="settings" aria-selected="false">统一设置与 UI 控件</button>
+        </div>
+      </header>
+
+      <div class="sdk-docs-layout">
+        <aside class="sdk-toc" aria-label="文档目录">
+          <p class="sdk-toc-title">本页目录</p>
+          <nav id="sdk-toc-nav"></nav>
+          <div class="sdk-toc-source">
+            <span>同步源文件</span>
+            <code id="sdk-doc-source">PluginSDK/README.md</code>
+          </div>
+        </aside>
+
+        <article class="card sdk-prose" id="sdk-doc-body">
+          <p class="sdk-loading">正在加载 SDK 文档…</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="22" height="22" loading="lazy">RemoteFlow</a>
+    <div class="sdk-footer-links">
+      <a href="plugins.html">插件商店</a>
+      <a href="index.html#island">灵动岛演示</a>
+      <a href="#top">回到顶部 ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

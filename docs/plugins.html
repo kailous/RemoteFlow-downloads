@@ -4,17 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="搜索和下载 RemoteFlow 灵动岛插件，查看功能、版本和安装要求。">
+  <meta name="description" content="RemoteFlow 社区插件商店：探索精选、官方与社区开发的灵动岛原生插件，支持搜索、分类筛选与开发者提交。">
   <title>插件商店 · RemoteFlow</title>
   <link rel="icon" href="assets/app-icon.png" type="image/png">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="plugins.css?v=3">
-  <script src="release-downloads.js" defer></script>
+  <link rel="stylesheet" href="plugins.css?v=5">
+  <script src="plugins-registry-data.js" defer></script>
   <script src="plugins.js" defer></script>
+  <script src="release-downloads.js" defer></script>
 </head>
-<body class="store-page">
+<body class="store-page" id="top">
   <a class="skip-link" href="#main">跳到正文</a>
-  <header class="nav store-nav">
+
+  <header class="nav store-nav" data-header>
     <div class="nav-inner">
       <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="26" height="26">RemoteFlow</a>
       <nav aria-label="主导航">
@@ -33,142 +36,174 @@
 
   <main class="store-main" id="main">
     <div class="wrap">
-      <header class="store-heading">
-        <div>
-          <h1>插件商店</h1>
-          <p>适用于搭载 Apple 芯片且运行 macOS 14 或更高版本的 Mac。</p>
+      <!-- ============ COMPACT APP-STORE TOP HEADER ============ -->
+      <header class="store-topbar">
+        <div class="store-topbar-title">
+          <div class="store-title-line">
+            <h1>插件商店</h1>
+            <span class="store-env-pill">Apple 芯片 · macOS 14+</span>
+          </div>
+          <p>发现官方与社区开发者打造的灵动岛原生卡片插件。</p>
         </div>
-        <search id="store-search-box" class="store-search" hidden>
-          <label class="store-sr-only" for="store-search">搜索插件</label>
-          <input type="search" id="store-search" placeholder="搜索插件" autocomplete="off" aria-controls="store-list">
-        </search>
+
+        <div class="store-topbar-actions">
+          <a class="btn btn-glass store-top-btn" href="sdk.html">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M6.2 5.5 2.5 9l3.7 3.5M11.8 5.5 15.5 9l-3.7 3.5M10.2 3.5 7.8 14.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>SDK 文档</span>
+          </a>
+          <button type="button" class="btn btn-primary store-top-btn" id="open-submit-dialog" aria-haspopup="dialog">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M9 3.5v11M3.5 9h11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>提交插件</span>
+          </button>
+        </div>
       </header>
 
-      <div class="store-catalog">
-        <aside class="store-sidebar" aria-label="商店导航">
-          <div class="store-filters" id="store-filters" role="group" aria-labelledby="store-categories" hidden>
-            <p id="store-categories">分类</p>
-            <button type="button" data-category="all" aria-pressed="true" aria-controls="store-list">全部插件</button>
-            <button type="button" data-category="music" aria-pressed="false" aria-controls="store-list">音乐</button>
-            <button type="button" data-category="system" aria-pressed="false" aria-controls="store-list">系统工具</button>
-          </div>
-          <a class="store-install-link" href="#install">安装指南 <span aria-hidden="true">↗</span></a>
-        </aside>
+      <!-- ============ SEARCH + CATEGORY / SOURCE FILTER BAR ============ -->
+      <div class="store-controls-bar">
+        <div class="store-cat-tabs" id="store-categories" role="tablist" aria-label="插件分类"></div>
 
-        <section aria-labelledby="store-list-title">
-          <div class="store-list-heading">
-            <h2 id="store-list-title">全部插件</h2>
-            <p id="store-count" role="status" aria-atomic="true">2 个插件</p>
+        <div class="store-right-controls">
+          <div class="store-source-seg" id="store-source-filter" role="group" aria-label="插件来源">
+            <button type="button" data-source="all" aria-pressed="true">全部</button>
+            <button type="button" data-source="official" aria-pressed="false">官方</button>
+            <button type="button" data-source="community" aria-pressed="false">社区</button>
           </div>
 
-          <ul class="store-list" id="store-list">
-            <li class="store-item" data-plugin-category="music" data-keywords="音乐播放 媒体 歌曲 切歌 上一首 下一首 暂停 专辑 封面 播放进度">
-              <img class="store-icon" src="assets/ui-music.webp" alt="" width="64" height="64">
-              <div class="store-item-info">
-                <h3>Apple Music</h3>
-                <p>在灵动岛查看专辑封面和进度，用遥控器播放、暂停或切歌。</p>
-                <span class="store-item-meta">音乐 · <span data-release-version="apple-music">1.5.0</span></span>
-              </div>
-              <div class="store-item-actions">
-                <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-AppleMusic-1.5.0-macos-arm64.zip" data-release-artifact="apple-music" aria-label="下载 Apple Music 1.5.0 ZIP">获取</a>
-                <button type="button" class="store-details-button" data-plugin-details="music-details" aria-label="查看 Apple Music 详情" aria-haspopup="dialog" hidden>查看详情</button>
-              </div>
-            </li>
-            <li class="store-item" data-plugin-category="system" data-keywords="系统快控 系统工具 亮度 锁屏 音频 声音输出 扬声器 耳机 蓝牙">
-              <div class="store-icon store-icon-system" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-              <div class="store-item-info">
-                <h3>系统快控</h3>
-                <p>在灵动岛调亮度、锁屏、切换声音输出或打开蓝牙设置。</p>
-                <span class="store-item-meta">系统工具 · <span data-release-version="system-controls">1.1.2</span></span>
-              </div>
-              <div class="store-item-actions">
-                <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-SystemControls-1.1.2-macos-arm64.zip" data-release-artifact="system-controls" aria-label="下载系统快控 1.1.2 ZIP">获取</a>
-                <button type="button" class="store-details-button" data-plugin-details="system-details" aria-label="查看系统快控详情" aria-haspopup="dialog" hidden>查看详情</button>
-              </div>
-            </li>
-          </ul>
-
-          <div class="store-empty" id="store-empty" hidden>
-            <h3>找不到匹配的插件</h3>
-            <p>试试其他关键词，或清除筛选查看全部插件。</p>
-            <button type="button" class="btn btn-glass store-get" id="store-reset">清除筛选</button>
-          </div>
-        </section>
+          <search class="store-search" id="store-search-box">
+            <label class="store-sr-only" for="store-search">搜索插件</label>
+            <svg class="store-search-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M13.5 13.5L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input type="search" id="store-search" placeholder="搜索插件、作者或功能…" autocomplete="off" aria-controls="store-list">
+            <kbd class="store-search-kbd" aria-hidden="true">/</kbd>
+          </search>
+        </div>
       </div>
 
-      <section class="card store-install" id="install" aria-labelledby="install-title">
-        <h2 id="install-title">安装指南</h2>
-        <ol>
-          <li><strong>获取插件</strong><p>下载 ZIP 后解压，在 Finder 中找到 <code>.bundle</code> 文件。</p></li>
-          <li><strong>开启开发者模式</strong><p>当前下载包为临时签名。在 RemoteFlow 的菜单插件管理中打开「安全」，开启「开发者模式」。</p></li>
-          <li><strong>导入到 RemoteFlow</strong><p>选择「安装插件」，导入 <code>.bundle</code> 文件，再打开灵动岛。</p></li>
+      <!-- ============ FEATURED SPOTLIGHT (仅在精选/全部且无搜索时展示紧凑推荐条) ============ -->
+      <section class="store-featured-section" id="store-featured-section" aria-labelledby="featured-heading">
+        <div class="store-row-head">
+          <h2 id="featured-heading">编辑精选</h2>
+          <span class="store-row-sub">经过实机验证的高质量灵动岛卡片</span>
+        </div>
+        <div class="featured-grid" id="store-featured-list"></div>
+      </section>
+
+      <!-- ============ COMPACT APP-STORE DIRECTORY GRID ============ -->
+      <section class="store-directory" aria-labelledby="store-list-title">
+        <div class="store-row-head">
+          <div class="store-row-left">
+            <h2 id="store-list-title">精选插件</h2>
+            <span class="store-count-badge" id="store-count" role="status" aria-atomic="true">0 个插件</span>
+          </div>
+          <a class="store-inline-link" href="#install">安装说明 ↓</a>
+        </div>
+
+        <ul class="app-grid" id="store-list"></ul>
+
+        <div class="store-empty" id="store-empty" hidden>
+          <div class="store-empty-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          </div>
+          <h3 id="store-empty-title">暂无匹配的插件</h3>
+          <p id="store-empty-desc">试试切换其他分类，或者用 Plugin SDK 提交该分类的第一个社区插件。</p>
+          <div class="store-empty-actions">
+            <button type="button" class="btn btn-glass store-small-btn" id="store-reset">查看全部插件</button>
+            <button type="button" class="btn btn-primary store-small-btn" id="store-empty-submit">提交新插件</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ COMMUNITY DEVELOPER CTA STRIP ============ -->
+      <section class="store-submit-strip" aria-labelledby="community-cta-title">
+        <div class="submit-strip-copy">
+          <span class="submit-strip-tag">社区共建</span>
+          <h2 id="community-cta-title">发布你的灵动岛插件，直连你的 GitHub Release</h2>
+          <p>插件二进制托管在开发者自己的 GitHub 仓库，商店索引锁定具体版本与 SHA-256 校验值；审核通过后即刻上架。</p>
+        </div>
+        <div class="submit-strip-actions">
+          <button type="button" class="btn btn-primary store-small-btn" id="strip-submit-btn">提交插件</button>
+          <a class="btn btn-ghost store-small-btn" href="sdk.html">查看 SDK 文档 →</a>
+        </div>
+      </section>
+
+      <!-- ============ COMPACT INSTALL GUIDE ============ -->
+      <section class="store-install-compact" id="install" aria-labelledby="install-title">
+        <div class="store-row-head">
+          <h2 id="install-title">安装说明</h2>
+          <span class="store-row-sub">插件以独立 <code>.bundle</code> 分发，安装时校验签名与指纹</span>
+        </div>
+        <ol class="install-steps-compact">
+          <li>
+            <span class="is-num">01</span>
+            <div><strong>下载并解压</strong><p>点击插件「获取」下载 ZIP 并解压，得到 <code>.bundle</code> 文件。</p></div>
+          </li>
+          <li>
+            <span class="is-num">02</span>
+            <div><strong>信任签名或开启开发者模式</strong><p>团队签名插件可在「安全」中信任 Team ID；临时签名插件需开启「开发者模式」。</p></div>
+          </li>
+          <li>
+            <span class="is-num">03</span>
+            <div><strong>导入 RemoteFlow</strong><p>在「浮动菜单设置」中点「安装插件」导入 <code>.bundle</code>，呼出灵动岛即生效。</p></div>
+          </li>
         </ol>
       </section>
     </div>
   </main>
 
   <footer class="footer wrap">
-    <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="22" height="22">RemoteFlow</a>
-    <a class="to-top" href="index.html#island">查看灵动岛演示 <span aria-hidden="true">→</span></a>
+    <a class="wordmark" href="index.html"><img src="assets/app-icon.png" alt="" width="22" height="22" loading="lazy">RemoteFlow</a>
+    <div class="store-footer-links">
+      <a href="sdk.html">Plugin SDK</a>
+      <a href="index.html#island">灵动岛演示</a>
+      <a href="#top">回到顶部 ↑</a>
+    </div>
   </footer>
 
-  <dialog class="dialog store-detail" id="music-details" aria-labelledby="music-title">
+  <!-- ============ DYNAMIC PLUGIN DETAIL DIALOG ============ -->
+  <dialog class="dialog store-detail" id="plugin-detail-dialog" aria-labelledby="detail-title">
     <form method="dialog"><button class="dialog-close" aria-label="关闭详情" autofocus>×</button></form>
-    <div class="store-detail-content">
-      <header class="store-detail-heading">
-        <h2 id="music-title">Apple Music</h2>
-        <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-AppleMusic-1.5.0-macos-arm64.zip" data-release-artifact="apple-music" aria-label="下载 Apple Music 1.5.0 ZIP">获取</a>
-      </header>
-      <dl class="store-detail-meta">
-        <div><dt>开发者</dt><dd>RemoteFlow</dd></div>
-        <div><dt>版本</dt><dd data-release-version="apple-music">1.5.0</dd></div>
-        <div><dt>兼容性</dt><dd>Apple 芯片 Mac · macOS 14+</dd></div>
-        <div><dt>安装包</dt><dd data-release-size="apple-music">ZIP · 36 KB</dd></div>
-      </dl>
-      <div class="store-detail-body">
-        <figure class="store-detail-preview"><img src="assets/island-music-card.png" width="360" height="360" alt="Apple Music 灵动岛卡片，显示专辑封面、曲目与播放进度"></figure>
-        <div>
-          <h3>功能</h3>
-          <ul>
-            <li>按上、下键切换曲目，按确定播放或暂停。</li>
-            <li>显示专辑封面、曲目和播放进度。</li>
-            <li>支持 Apple Music 订阅曲目及「音乐」App 的本地资料库。</li>
-          </ul>
-          <h3>首次使用</h3>
-          <p>在卡片上按确定，按系统提示授权 RemoteFlow 控制「音乐」。</p>
-          <a href="#install">查看安装指南 <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-    </div>
+    <div class="store-detail-content" id="detail-content"></div>
   </dialog>
 
-  <dialog class="dialog store-detail" id="system-details" aria-labelledby="system-title">
-    <form method="dialog"><button class="dialog-close" aria-label="关闭详情" autofocus>×</button></form>
-    <div class="store-detail-content">
-      <header class="store-detail-heading">
-        <h2 id="system-title">系统快控</h2>
-        <a class="btn btn-primary store-get" href="https://github.com/kailous/RemoteFlow-downloads/releases/download/v1.5.0-beta.1/RemoteFlow-Plugin-SystemControls-1.1.2-macos-arm64.zip" data-release-artifact="system-controls" aria-label="下载系统快控 1.1.2 ZIP">获取</a>
-      </header>
-      <dl class="store-detail-meta">
-        <div><dt>开发者</dt><dd>RemoteFlow</dd></div>
-        <div><dt>版本</dt><dd data-release-version="system-controls">1.1.2</dd></div>
-        <div><dt>兼容性</dt><dd>Apple 芯片 Mac · macOS 14+</dd></div>
-        <div><dt>安装包</dt><dd data-release-size="system-controls">ZIP · 89 KB</dd></div>
-      </dl>
-      <div class="store-detail-body">
-        <figure class="store-detail-preview">
-          <div class="store-controls-crop"><img src="assets/island-controls.webp" width="1734" height="552" alt="系统快控的亮度、锁屏、声音输出和连接蓝牙卡片"></div>
-        </figure>
-        <div>
-          <h3>功能</h3>
-          <ul>
-            <li>在亮度卡片上用遥控器音量键调节亮度。</li>
-            <li>锁屏、切换声音输出设备或打开蓝牙配对设置。</li>
-          </ul>
-          <h3>使用要求</h3>
-          <p>锁屏需要辅助功能权限。亮度调节取决于显示器支持情况。</p>
-          <a href="#install">查看安装指南 <span aria-hidden="true">↗</span></a>
-        </div>
+  <!-- ============ DEVELOPER SUBMIT PLUGIN DIALOG ============ -->
+  <dialog class="dialog submit-dialog" id="submit-plugin-dialog" aria-labelledby="submit-title">
+    <form method="dialog"><button class="dialog-close" aria-label="关闭" autofocus>×</button></form>
+    <div class="submit-dialog-body">
+      <p class="kicker">开发者提交</p>
+      <h2 id="submit-title">将你的插件上架到插件商店</h2>
+      <p class="submit-lead">采用「仓库直连 + 哈希锁定」模式：二进制由你的 GitHub Release 托管，商店索引记录版本、下载链接与 SHA-256 校验值。</p>
+
+      <ol class="submit-flow">
+        <li>
+          <strong>1. 按 SDK 打包并发布 Release</strong>
+          <p>使用 <a href="sdk.html">Plugin SDK</a> 编译 <code>.bundle</code>，签名后打包为 ZIP 上传至你的 GitHub 仓库 Release，并生成 <code>shasum -a 256</code>。</p>
+        </li>
+        <li>
+          <strong>2. 准备插件清单条目（JSON）</strong>
+          <div class="submit-code-wrap">
+            <pre><code id="submit-json-template">{
+  "id": "com.yourname.my-plugin",
+  "name": "你的插件名称",
+  "tagline": "一句话介绍核心功能",
+  "category": "productivity",
+  "author": "你的名称",
+  "repoUrl": "https://github.com/you/my-plugin",
+  "version": "1.0.0",
+  "downloadUrl": "https://github.com/you/my-plugin/releases/download/v1.0.0/MyPlugin-1.0.0-macos-arm64.zip",
+  "sha256": "&lt;ZIP 的 SHA-256&gt;",
+  "signing": { "type": "developer-id", "teamId": "YOURTEAMID" }
+}</code></pre>
+            <button type="button" class="submit-copy-btn" id="copy-submit-json">复制模板</button>
+          </div>
+        </li>
+        <li>
+          <strong>3. 提交审核</strong>
+          <p>通过 GitHub Issue 或 Pull Request 提交上述条目；审核通过并核对 SHA-256 后自动收录上线，高质量插件将入选「精选插件」。</p>
+        </li>
+      </ol>
+
+      <div class="submit-dialog-actions">
+        <a class="btn btn-primary" id="submit-github-link" href="https://github.com/kailous/RemoteFlow-downloads/issues/new?title=%5B%E6%8F%92%E4%BB%B6%E6%8F%90%E4%BA%A4%5D%20" target="_blank" rel="noopener">前往 GitHub 提交插件 ↗</a>
+        <a class="btn btn-glass" href="sdk.html">阅读 Plugin SDK</a>
       </div>
     </div>
   </dialog>

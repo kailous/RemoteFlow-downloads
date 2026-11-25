@@ -6,6 +6,7 @@
     { id: "app", packageName: new RegExp(`^RemoteFlow-${version}${archive}\\.(zip|dmg|pkg)$`) },
     { id: "apple-music", title: "Apple Music", packageName: new RegExp(`^RemoteFlow-Plugin-AppleMusic-${version}${archive}\\.(zip)$`) },
     { id: "system-controls", title: "系统快控", packageName: new RegExp(`^RemoteFlow-Plugin-SystemControls-${version}${archive}\\.(zip)$`) },
+    { id: "plugin-sdk", title: "Plugin SDK", packageName: new RegExp(`^RemoteFlow-PluginSDK-${version}\\.(zip)$`) },
   ];
 
   async function refreshDownloads() {
