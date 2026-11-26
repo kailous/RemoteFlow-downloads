@@ -359,6 +359,11 @@ window.addEventListener("keydown", (event) => {
 
 function initRegistry(data) {
   registry = data;
+  const query = new URLSearchParams(window.location.search).get("q")?.trim();
+  if (query) {
+    search.value = query;
+    activeCategory = "all";
+  }
   renderAll();
 }
 
