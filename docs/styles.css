@@ -1172,13 +1172,40 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .faq-item p { max-width: 620px; padding: 0 44px 26px 0; color: var(--muted-2); font-size: 16px; line-height: 1.75; }
 
 /* ---------- download ---------- */
-.download-section { padding-block: 40px 120px; }
+.download-section { padding-block: 40px 32px; }
 .download { position: relative; display: grid; justify-items: center; gap: 18px; padding: clamp(56px, 8vw, 110px) 24px; overflow: hidden; border: 1px solid rgba(0, 106, 255, 0.3); border-radius: 40px; background: radial-gradient(ellipse 80% 70% at 50% 110%, rgba(0, 106, 255, 0.55), transparent 70%), radial-gradient(ellipse 50% 40% at 50% 0%, rgba(0, 106, 255, 0.15), transparent 70%), #05060a; text-align: center; }
 .download-icon { width: 96px; height: 96px; margin-bottom: 10px; filter: drop-shadow(0 20px 40px rgba(0, 106, 255, 0.5)); }
 .download h2 { font-size: clamp(36px, 5.6vw, 68px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
 .download p { color: var(--muted-2); font-size: 18px; }
 .download .btn { margin-top: 14px; }
 .download small { color: var(--muted); font-size: 13px; }
+
+/* ---------- partner banner ---------- */
+.partner-section { padding-bottom: clamp(40px, 6vw, 72px); }
+.partner-banner {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px clamp(12px, 2.8vw, 28px);
+  padding: 18px clamp(16px, 3.6vw, 38px);
+  border: 1px solid var(--line-2);
+  border-radius: 22px;
+  background: radial-gradient(ellipse at left center, rgba(227, 173, 83, 0.18), transparent 72%), #100d0a;
+  color: var(--fg);
+  text-decoration: none;
+}
+.partner-banner img { grid-column: 1; grid-row: 1; width: 48px; height: 48px; object-fit: contain; }
+.partner-copy { display: grid; gap: 3px; font-size: 14px; color: var(--muted-2); }
+.partner-copy strong { color: var(--fg); font-size: clamp(20px, 2.5vw, 26px); line-height: 1.15; }
+.partner-link { color: #e3ad53; font-size: 14px; font-weight: 650; }
+.partner-banner:hover { border-color: #e3ad53; }
+.partner-banner:hover .partner-link { text-decoration: underline; text-underline-offset: 4px; }
+.partner-banner:focus-visible { outline: 2px solid #e3ad53; outline-offset: 4px; }
+@media (max-width: 600px) {
+  .partner-banner { grid-template-columns: 44px minmax(0, 1fr); }
+  .partner-banner img { width: 40px; height: 40px; }
+  .partner-link { grid-column: 2; justify-self: start; }
+}
 
 /* ---------- footer ---------- */
 .footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 28px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
