@@ -9,6 +9,7 @@ const groups = [
     { id: "keyboardShortcut", name: "键盘快捷键", description: "录制并发送快捷键，也可随遥控器按住与松开。", example: "⌘ N", field: "快捷键", result: "已发送快捷键" },
     { id: "typeText", name: "输入文本", description: "将预设的单行文字输入当前焦点。", example: "今天的灵感", field: "文本内容", result: "已输入文本" },
     { id: "focusElement", name: "聚焦控件", description: "在目标应用里定位并聚焦控件，支持自动学习或手动定位。", example: "备忘录的编辑区", field: "目标控件", result: "控件已聚焦" },
+    { id: "clickElement", name: "点击控件", description: "在应用作用域里选择「学习控件」，点击要学习的按钮或链接。按键或口令触发后，遥控流会重新定位并点击它。", example: "目标应用中的按钮", field: "已学习的控件", result: "控件已点击" },
   ] },
   { name: "链接与请求", actions: [
     { id: "openURL", name: "访问 URL", description: "用默认浏览器打开 HTTP 或 HTTPS 地址。", example: "https://example.com", field: "网址", result: "预览网页访问" },
@@ -33,6 +34,7 @@ const iconPaths = {
   keyboardShortcut: '<path d="M9 6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3z"/>',
   typeText: '<path d="M5 6V4.5h14V6M12 4.5v15M9 19.5h6"/>',
   focusElement: '<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2.2v2.8M12 19v2.8M2.2 12H5M19 12h2.8"/>',
+  clickElement: '<path d="m5 4 3.5 15 3-5.5 5.5-3zM14 15l3 3M13 3v3M20 7l-2 2"/>',
   openURL: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
   urlSchemeRequest: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
   unlockScreen: '<rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 7.6-1.7"/>',
