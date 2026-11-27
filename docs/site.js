@@ -576,8 +576,6 @@ function revealStep(row) {
   chainList.scrollTop += Math.max(0, row.getBoundingClientRect().bottom - chainList.getBoundingClientRect().bottom);
 }
 
-byId("open-demo-variables").addEventListener("click", () => byId("demo-variables").showModal());
-
 function readDemoEcho(source) {
   const match = source.trim().match(/^echo\s+(?:'([^']*)'|"([^"]*)")$/);
   return match ? match[1] ?? match[2] : null;
@@ -586,7 +584,7 @@ function readDemoEcho(source) {
 runButton.addEventListener("click", async () => {
   const event = currentEvent();
   if (running || !event?.enabled || !event.chain.length) return;
-  const variables = new Map([["prefix", byId("demo-variable-prefix").value]]);
+  const variables = new Map([["prefix", "结果"]]);
   let finalValue;
   for (const item of event.chain) {
     if (item.id === "script" && item.output) {
