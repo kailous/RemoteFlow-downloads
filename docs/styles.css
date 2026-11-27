@@ -1363,8 +1363,6 @@ body { overflow-x: clip; }
   font: 12px/1.5 ui-monospace, monospace;
 }
 .demo-script-result { display: block; margin-top: 4px; overflow-wrap: anywhere; }
-.native-variable-icon { display: grid; place-items: center; width: 42px; height: 42px; }
 @media (max-width: 680px) {
-  .native-variable-icon { width: 34px; height: 34px; }
   .native-variable-icon img { width: 17px; height: 17px; }
 }
