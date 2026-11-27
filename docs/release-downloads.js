@@ -24,11 +24,17 @@
         const asset = release.assets.find((item) => item.state === "uploaded" && packageName.test(item.name));
         if (!asset) continue;
         const [, packageVersion, extension] = asset.name.match(packageName);
+        const [major, minor] = packageVersion.split(".").map((part) => Number.parseInt(part, 10));
+        if (id === "app" && (major < 1 || (major === 1 && minor < 6))) continue;
         const url = `https://github.com/${repository}/releases/download/${release.tag_name}/${asset.name}`;
         const format = extension.toUpperCase();
 
         for (const link of links) {
           link.href = url;
+          if (id === "app") {
+            link.textContent = "下载 Mac 版";
+            link.setAttribute("aria-label", `下载 RemoteFlow ${packageVersion} Mac 版`);
+          }
           if (title) link.setAttribute("aria-label", `下载 ${title} ${packageVersion} ${format}`);
         }
         for (const label of document.querySelectorAll(`[data-release-version="${id}"]`)) {
