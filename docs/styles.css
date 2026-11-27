@@ -1351,3 +1351,17 @@ body { overflow-x: clip; }
   *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; animation-iteration-count: 1 !important; }
   .hero-rings { display: none; }
 }
+
+.step-inset textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 8px;
+  border: 0;
+  border-radius: 5px;
+  background: #101010;
+  color: inherit;
+  font: 12px/1.5 ui-monospace, monospace;
+}
+.demo-script-result { display: block; margin-top: 4px; overflow-wrap: anywhere; }
+#demo-variables form { display: grid; gap: 12px; }
+#demo-variables label { display: grid; gap: 6px; }

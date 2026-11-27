@@ -19,7 +19,7 @@ const groups = [
     { id: "unlockScreen", name: "解锁屏幕", description: "使用保存在 macOS 钥匙串中的登录密码尝试解锁。", example: "macOS 钥匙串", result: "模拟解锁完成" },
   ] },
   { name: "流程与反馈", actions: [
-    { id: "script", name: "运行脚本", description: "支持 Shell、AppleScript 和 JavaScript（JXA），可单独试运行并将标准输出交给后续动作。", example: "echo 'Hello RemoteFlow'", field: "Shell 脚本", result: "模拟脚本完成" },
+    { id: "script", name: "运行脚本", description: "支持 Shell、AppleScript 和 JavaScript（JXA），可单独试运行并将标准输出交给后续动作。", example: "echo 'Hello RemoteFlow'", field: "Shell 脚本", editor: "script", result: "模拟脚本完成" },
     { id: "setVariable", name: "设置变量", description: "用文本或其他变量的值更新已有的全局变量。", example: "观影", field: "新值", result: "模拟更新变量" },
     { id: "wait", name: "等待", description: "暂停指定毫秒数，再执行下一步。", example: "300", field: "等待时长", editor: "wait", result: "等待" },
     { id: "showHUD", name: "显示 HUD", description: "在 Mac 屏幕上显示自定义提示和图标。", example: "准备好了", field: "提示内容", result: "屏幕提示" },
@@ -113,6 +113,10 @@ function launch(name, app, triggerPhrase = name) {
 // 1:1 对应实机截图 workspace.webp 的配置列表
 const scopes = [
   { name: "全局", icon: "global", kind: "global", events: [
+    flow("演示脚本输出", { button: "menu", chain: [
+      { ...step("script", "echo '准备好了'"), output: "result" },
+      step("showHUD", "{{prefix}} · {{result}}"),
+    ] }),
     launch("启动Figma", "Figma", "启动 Figma"),
     launch("打开 Codex", "Codex", "打开 Codex"),
     launch("打开微信", "微信", "打开微信"),
@@ -155,7 +159,7 @@ const scopes = [
 
 const appIcons = new Set(["figma", "codex", "wechat", "music", "chrome", "kivo"]);
 let scopeIndex = 0;
-let eventIndex = 4; // 默认选中「浮动菜单」，与实机截图完全一致
+let eventIndex = 0; // 默认展示脚本输出传给 HUD 的示例
 let running = false;
 const scope = () => scopes[scopeIndex];
 const currentEvent = () => scope().events[eventIndex];
@@ -363,6 +367,27 @@ function renderChain() {
       appRow.prepend(input);
       wrap.append(cap, appRow);
       inset.append(wrap);
+    } else if (action.editor === "script") {
+      inset.innerHTML = `
+        <label><span>脚本类型</span><input value="Shell" readonly></label>
+        <label><span>脚本内容</span><textarea rows="2" spellcheck="false"></textarea></label>
+        <label><span>将标准输出保存为变量</span><input data-script-output placeholder="例如 result"></label>
+        <button class="btn btn-small btn-ghost" type="button">试运行</button>
+        <output class="demo-script-result" aria-live="polite"></output>`;
+      const source = inset.querySelector("textarea");
+      const outputName = inset.querySelector("[data-script-output]");
+      const trial = inset.querySelector("button");
+      source.value = item.value;
+      outputName.value = item.output ?? "";
+      source.disabled = outputName.disabled = trial.disabled = running;
+      source.addEventListener("input", () => { item.value = source.value; });
+      outputName.addEventListener("input", () => { item.output = outputName.value; });
+      trial.addEventListener("click", () => {
+        const result = readDemoEcho(item.value);
+        inset.querySelector("output").textContent = result === null
+          ? "网页演示仅模拟 echo 文本。"
+          : `模拟成功 · 退出码 0 · 标准输出：${result}`;
+      });
     } else if (action.editor === "wait") {
       const waitRow = document.createElement("div");
       waitRow.className = "step-wait-row";
@@ -551,9 +576,31 @@ function revealStep(row) {
   chainList.scrollTop += Math.max(0, row.getBoundingClientRect().bottom - chainList.getBoundingClientRect().bottom);
 }
 
+byId("open-demo-variables").addEventListener("click", () => byId("demo-variables").showModal());
+
+function readDemoEcho(source) {
+  const match = source.trim().match(/^echo\s+(?:'([^']*)'|"([^"]*)")$/);
+  return match ? match[1] ?? match[2] : null;
+}
+
 runButton.addEventListener("click", async () => {
   const event = currentEvent();
   if (running || !event?.enabled || !event.chain.length) return;
+  const variables = new Map([["prefix", byId("demo-variable-prefix").value]]);
+  let finalValue;
+  for (const item of event.chain) {
+    if (item.id === "script" && item.output) {
+      const output = readDemoEcho(item.value);
+      if (output === null || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(item.output)) {
+        status("请使用示例 echo 脚本和有效的输出变量名。");
+        return;
+      }
+      variables.set(item.output, output);
+    }
+    finalValue = item.id === "script" ? item.value : item.value.replace(
+      /\{\{([A-Za-z_][A-Za-z0-9_]*)\}\}/g, (reference, name) => variables.get(name) ?? reference
+    );
+  }
   const badIndex = event.chain.findIndex(({ id, value }) => !value.trim() || (id === "wait" && !/^\d{1,4}$/.test(value.trim())));
   if (badIndex !== -1) {
     status(`请检查第 ${badIndex + 1} 步参数，演示等待时间支持 0–9999 毫秒。`);
@@ -577,7 +624,7 @@ runButton.addEventListener("click", async () => {
   for (const row of chainList.children) row.dataset.state = "done";
   const last = event.chain.at(-1);
   const action = actions.get(last.id);
-  status(`模拟完成 · ${action.result}${action.field && last.id !== "wait" ? " · " + last.value : ""}`, last.id === "showFloatingMenu");
+  status(`模拟完成 · ${action.result}${action.field && last.id !== "wait" ? " · " + finalValue : ""}`, last.id === "showFloatingMenu");
   if (document.activeElement === document.body) runButton.focus({ preventScroll: true });
 });
 renderWorkspace();
