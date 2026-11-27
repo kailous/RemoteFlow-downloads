@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="RemoteFlow 把小米蓝牙遥控器 2 Pro 变成 Mac 的指挥棒：按键与语音触发动作链，语音在设备端识别、全程本机完成，灵动岛卡片导航。macOS 14+。">
+  <meta name="description" content="RemoteFlow 把小米蓝牙遥控器 2 Pro 变成 Mac 的指挥棒：按键与本机语音触发动作链，支持灵动岛插件、脚本试运行与动作间变量传递。macOS 14+。">
   <title>RemoteFlow · 你的 Mac，多了一个遥控器</title>
   <link rel="icon" href="assets/app-icon.png" type="image/png">
   <link rel="preload" href="assets/hero-remote-upright.webp" as="image">
@@ -147,7 +147,7 @@
             <div class="native-brand">
               <img src="assets/app-icon.png" alt="" width="50" height="50">
               <div>
-                <div class="native-title-line"><strong>RemoteFlow</strong><span>v1.5</span></div>
+                <div class="native-title-line"><strong>RemoteFlow</strong><span>v1.6</span></div>
                 <p>用遥控器编排你的 macOS 操作</p>
               </div>
             </div>
@@ -283,12 +283,34 @@
       </div>
     </section>
 
+    <section class="section section-tight" id="version-16" aria-labelledby="version-16-title">
+      <header class="section-head wrap" data-reveal>
+        <p class="kicker">RemoteFlow 1.6</p>
+        <h2 id="version-16-title">脚本与变量，串起多个动作。</h2>
+        <p>先在编辑器试运行脚本，再把结果交给后续动作。</p>
+      </header>
+      <ol class="steps wrap">
+        <li class="card step">
+          <h3>在动作里调试脚本</h3>
+          <p>Shell、AppleScript 和 JavaScript（JXA）支持语法高亮和行号。试运行可查看耗时、退出状态、标准输出和错误输出。</p>
+        </li>
+        <li class="card step">
+          <h3>集中管理全局变量</h3>
+          <p>点击工具栏的 {x} 管理变量。动作里输入 <code>{{变量名}}</code>，执行时读取最新值。「设置变量」可在流程里更新全局变量。</p>
+        </li>
+        <li class="card step">
+          <h3>把脚本结果交给下一步</h3>
+          <p>将成功脚本的标准输出保存为临时变量。下一步可用它打开链接、输入文本或显示 HUD。临时变量在本次运行结束后清除。</p>
+        </li>
+      </ol>
+    </section>
+
     <!-- ============ CATALOG ============ -->
     <section class="section section-tight" id="actions" aria-labelledby="actions-title">
       <header class="section-head wrap" data-reveal>
         <p class="kicker">动作目录</p>
-        <h2 id="actions-title"><span id="action-total">14</span> 种动作，<br>覆盖日常所需。</h2>
-        <p>从打开应用到解锁屏幕，自由组合成你自己的工作流。</p>
+        <h2 id="actions-title"><span id="action-total">15</span> 种动作，<br>覆盖日常所需。</h2>
+        <p>从打开应用到运行脚本，自由组合成你自己的工作流。</p>
       </header>
       <div class="catalog wrap" id="catalog" data-reveal></div>
       <p class="legacy-note wrap">旧版兼容动作「唤醒屏幕以解锁」仍可在已有流程中运行，当前动作菜单已移除这个独立入口。</p>

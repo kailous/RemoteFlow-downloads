@@ -19,7 +19,8 @@ const groups = [
     { id: "unlockScreen", name: "解锁屏幕", description: "使用保存在 macOS 钥匙串中的登录密码尝试解锁。", example: "macOS 钥匙串", result: "模拟解锁完成" },
   ] },
   { name: "流程与反馈", actions: [
-    { id: "script", name: "运行脚本", description: "执行 Shell、AppleScript 或 JavaScript (JXA) 脚本。", example: "echo 'Hello RemoteFlow'", field: "Shell 脚本", result: "模拟脚本完成" },
+    { id: "script", name: "运行脚本", description: "支持 Shell、AppleScript 和 JavaScript（JXA），可单独试运行并将标准输出交给后续动作。", example: "echo 'Hello RemoteFlow'", field: "Shell 脚本", result: "模拟脚本完成" },
+    { id: "setVariable", name: "设置变量", description: "用文本或其他变量的值更新已有的全局变量。", example: "观影", field: "新值", result: "模拟更新变量" },
     { id: "wait", name: "等待", description: "暂停指定毫秒数，再执行下一步。", example: "300", field: "等待时长", editor: "wait", result: "等待" },
     { id: "showHUD", name: "显示 HUD", description: "在 Mac 屏幕上显示自定义提示和图标。", example: "准备好了", field: "提示内容", result: "屏幕提示" },
     { id: "showFloatingMenu", name: "显示浮动菜单", description: "呼出可用遥控器导航的灵动岛卡片。", example: "音乐 / 亮度 / 声音输出", editor: "floating", result: "灵动岛已打开" },
@@ -38,6 +39,7 @@ const iconPaths = {
   openURL: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
   urlSchemeRequest: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
   unlockScreen: '<rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 7.6-1.7"/>',
+  setVariable: '<path d="M9 5H7a2 2 0 0 0-2 2v3l-2 2 2 2v3a2 2 0 0 0 2 2h2m6-14h2a2 2 0 0 1 2 2v3l2 2-2 2v3a2 2 0 0 1-2 2h-2m-5-9 4 4m0-4-4 4"/>',
   script: '<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7.5 9.2l3 2.8-3 2.8M13 15h4"/>',
   wait: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/>',
   showHUD: '<rect x="3" y="5" width="18" height="12" rx="3"/><path d="M8.5 20.5h7M12 17v3.5"/>',
